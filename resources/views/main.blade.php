@@ -1,7 +1,6 @@
 <x-layouts.layout>
     @guest
-    <div class="hero min-h-full"
-        style="background-image: url(https://img.freepik.com/vector-gratis/fondo-tinta-alcohol-acuarela_23-2149239777.jpg);">
+    <div class="hero min-h-full" style="background-image: url('{{ asset('images/fondo.jpg') }}');">
         <div class="hero-overlay bg-opacity-10"></div>
         <div class="hero-content text-neutral-content text-center">
             <div class="max-w-md">
@@ -15,8 +14,7 @@
     @endguest
 
     @auth
-    <div class="hero min-h-full"
-    style="background-image: url(https://img.freepik.com/vector-gratis/fondo-tinta-alcohol-acuarela_23-2149239777.jpg);">
+    <div class="hero min-h-full" style="background-image: url('{{ asset('images/fondo.jpg') }}');">
     <div class="container mx-auto p-4 sm:p-6">
         <!-- Cambié grid-cols-4 a un diseño responsive -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
