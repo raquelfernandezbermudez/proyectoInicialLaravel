@@ -21,6 +21,7 @@ export default {
                 "10v": "10vh",
                 "15v": "15vh",
                 "65v": "65vh",
+                "75v": "75vh",
             },
             colors: {
                 header: "#896a92",

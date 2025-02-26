@@ -11,10 +11,16 @@
 <body>
 <x-layouts.header />
 <x-layouts.nav />
-
+@auth
 <main class="bg-main h-65v">
     {{$slot}}
 </main>
+@endauth
+@guest
+<main class="bg-main h-75v">
+    {{$slot}}
+</main>
+@endguest
 <x-layouts.footer />
 
 </body>

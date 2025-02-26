@@ -3,7 +3,7 @@
     {{--    --}}
     <!--   -->
     <img class="h-16 max-h-full" src="{{asset('images/logo.png')}}" alt="logo">
-    <h1 class="text-5xl text-white font-CocoBubble">GattoTeca</h1>
+    <h1 class="text-5xl text-white font-CocoBubble">GatoTeca</h1>
     <div>
         @guest
             <form action="">
@@ -12,7 +12,7 @@
             </form>
         @endguest
         @auth
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 text-white">
             <p>Hola {{ auth()->user()->name }}</p>
             <form action="{{ route('logout') }}" method="post">
                 @csrf

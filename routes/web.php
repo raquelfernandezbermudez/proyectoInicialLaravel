@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\CatController;
 
 Route::get('/', function () {
     return view('main');
@@ -27,3 +28,6 @@ Route::middleware('auth')->group(function () {
 Route::view("about", "about");
 Route::view("noticias", "noticias");
 require __DIR__.'/auth.php';
+
+
+Route::resource("cats", CatController::class)->middleware("auth");
