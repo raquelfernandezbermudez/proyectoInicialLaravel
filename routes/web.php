@@ -25,8 +25,9 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::view("about", "about");
-Route::view("noticias", "noticias");
+Route::view("about", "about")->name('about.index');
+Route::view("contacta", "contacta")->name('contacta.index');
+
 require __DIR__.'/auth.php';
 
 

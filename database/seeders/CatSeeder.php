@@ -25,8 +25,7 @@ class CatSeeder extends Seeder
             [
                 'name' => 'Bigotes',
                 'age' => 3,
-                'image' => '<images>
-                <cats>bigotes.jpg',
+                'image' => 'images/cats/bigotes.jpg',
                 'adoptable' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
