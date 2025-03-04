@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: "CocoBubble"; /* Debe coincidir con el nombre en tailwind.config.js */
-    src: url("/fonts/CocoBubble-Regular.ttf") format("truetype");
+    src: url("../fonts/CocoBubble-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }

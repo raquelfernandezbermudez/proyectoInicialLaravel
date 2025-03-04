@@ -2,7 +2,9 @@
 <header class="hidden md:flex h-15v bg-header flex flex-row justify-between items-center p-3">
     {{--    --}}
     <!--   -->
-    <img class="h-16 max-h-full" src="{{asset('images/logo.png')}}" alt="logo">
+    <a href="/">
+        <img class="h-16 max-h-full" src="{{asset('images/logo.png')}}" alt="logo">
+    </a>
     <h1 class="text-5xl text-white font-CocoBubble">GatoTeca</h1>
     <div>
         @guest
@@ -28,7 +30,9 @@
 {{--Diseño para móviles--}}
 <header class="md:hidden bg-header flex justify-between items-center p-3 relative">
     <!-- Logo -->
-    <img class="h-16 max-h-full" src="{{ asset('images/logo.png') }}" alt="logo">
+    <a href="/">
+        <img class="h-16 max-h-full" src="{{ asset('images/logo.png') }}" alt="logo">
+    </a>
 
     <!-- Menú hamburguesa -->
     <div>
@@ -57,4 +61,3 @@
         </div>
     </div>
 </header>
-

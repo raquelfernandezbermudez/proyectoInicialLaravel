@@ -1,6 +1,6 @@
 <x-layouts.layout title="Register">
-    <div class="flex flex-row justify-center items-center min-h-full bg-gray-300">
-        <div class="bg-white p-4 rounded-xl">
+<div class="hero min-h-full" style="background-image: url('{{ asset('images/fondo.jpg') }}');">
+<div class="bg-white p-4 rounded-xl">
             <form method="POST" action="{{ route('register') }}" class="bg-gray-300 p-3">
                 @csrf
                 

@@ -1,7 +1,7 @@
 <x-layouts.layout title="Login">
     <!-- Session Status -->
-    <div class="flex flex-row justify-center items-center min-h-full bg-gray-300">
-        <div class="bg-white p-4 rounded-xl ">
+    <div class="hero min-h-full" style="background-image: url('{{ asset('images/fondo.jpg') }}');">
+    <div class="bg-white p-4 rounded-xl ">
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
