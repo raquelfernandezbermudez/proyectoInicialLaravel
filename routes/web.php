@@ -32,3 +32,4 @@ require __DIR__.'/auth.php';
 
 
 Route::resource("cats", CatController::class)->middleware("auth");
+Route::get('/cats/{id}/edit', [CatApiController::class, 'edit'])->name('cats.edit');

@@ -1,10 +1,10 @@
 <x-layouts.layout title="Crear Gato">
     <div class="hero min-h-full" style="background-image: url('{{ asset('images/fondo.jpg') }}');">
         <div class="bg-white p-4 rounded-xl">
-            <h2 class="text-2xl font-bold mb-4">Crear Gato</h2>
-            <form method="POST" action="{{ route('cats.store') }}" class="space-y-4" enctype="multipart/form-data">
+            <h2 class="text-2xl font-bold mb-4">Editar Gato</h2>
+            <form method="POST" action="{{ route('cats.update', $cat->id) }}" class="space-y-4" enctype="multipart/form-data">
                 @csrf
-                @method('POST')
+                @method('PUT')
                 <!-- Nombre -->
                 <div>
                     <x-input-label for="name" :value="__('Nombre')" />
@@ -58,7 +58,7 @@
                 <!-- Botón -->
                 <div class="flex justify-end">
                     <x-primary-button class="mt-4">
-                        {{ __('Crear Gato') }}
+                        {{ __('Editar Gato') }}
                     </x-primary-button>
                 </div>
             </form>

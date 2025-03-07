@@ -38,9 +38,28 @@ class CatApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Validar los datos de entrada
+        $request->validate([
+            'data.attributes.name' => 'required|string|max:255',
+            // Agrega otras validaciones según sea necesario
+        ]);
+    
+        // Buscar el gato por ID
+        $cat = Cat::findOrFail($id);
+    
+        // Actualizar los datos
+        $cat->update($request->input('data.attributes'));
+    
+        // Retornar el recurso actualizado
+        return new CatResource($cat);
+    }
+
+    public function edit($id)
+    {
+        $cat = Cat::findOrFail($id);
+        return view('cats.edit', compact('cat'));
     }
 
     /**
