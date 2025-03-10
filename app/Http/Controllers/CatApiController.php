@@ -6,11 +6,43 @@ use App\Http\Resources\CatCollection;
 use App\Models\Cat;
 use Illuminate\Http\Request;
 
+/**
+ * @OA\Info (
+ *     title="API para consultar los gatos de mi centro de adopción",
+ *      version="2.0.0",
+ *      description="Esta api permite interactuar con los gatos",
+ *      @OA\Contact(
+ *          name="Raquel Fernández",
+ *          email="rmfernandezbermudez@gmail.com",
+ *      ),
+ *      @OA\License(
+ *          name="MIT",
+ *          url="https://opensource.org/license/mit",
+ *      )
+ * )
+*/
+
 class CatApiController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *      path="/api/cats",
+     *      operationId="GetCats",
+     *      tags={"cats"},
+     *      summary="Obtener todos los gatos",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Éxito",
+     *          @OA\MediaType(
+     *              mediaType="application/vnd.api+json",
+     *          )
+     *      )
+     * )
      */
+
+    
+
     public function index()
     {
         return new CatCollection(Cat::all());
@@ -21,8 +53,8 @@ class CatApiController extends Controller
      */
     public function store(Request $request)
     {
-        $datos=$request->input('data.attributes');
-        $cat=new Cat($datos);
+        $datos = $request->input('data.attributes');
+        $cat = new Cat($datos);
         $cat->save();
         return new CatResource($cat);
     }
@@ -45,13 +77,13 @@ class CatApiController extends Controller
             'data.attributes.name' => 'required|string|max:255',
             // Agrega otras validaciones según sea necesario
         ]);
-    
+
         // Buscar el gato por ID
         $cat = Cat::findOrFail($id);
-    
+
         // Actualizar los datos
         $cat->update($request->input('data.attributes'));
-    
+
         // Retornar el recurso actualizado
         return new CatResource($cat);
     }
