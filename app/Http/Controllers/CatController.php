@@ -25,7 +25,7 @@ class CatController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'age' => 'required|integer|min:0|max:30',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'required' // Solo verifica que se haya subido un archivo
         ]);
 
         $cat = new Cat();
@@ -35,8 +35,8 @@ class CatController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('images/cats'), $imageName);
-            $cat->image = $imageName;
+            $image->move(public_path('images/cats'), $imageName); // Mueve la imagen a la carpeta correcta
+            $cat->image = $imageName; // Guarda el nombre de la imagen en la base de datos
         }
 
         $cat->save();

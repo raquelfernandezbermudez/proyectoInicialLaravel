@@ -66,18 +66,22 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-        document.getElementById('create-button').addEventListener('click', function(event) {
-            event.preventDefault(); // Previene el envío del formulario para mostrar la alerta primero
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('create-button').addEventListener('click', function(event) {
+                event.preventDefault(); // Previene el envío del formulario para mostrar la alerta primero
 
-            Swal.fire({
-                title: 'OK!',
-                text: 'Gato creado correctamente.',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('create-cat-form').submit(); // Envía el formulario después de que el usuario confirme
-                }
+                Swal.fire({
+                    title: '¿Confirmar creación?',
+                    text: '¿Estás seguro de que deseas crear este gato?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí, crear',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('create-cat-form').submit(); // Envía el formulario después de que el usuario confirme
+                    }
+                });
             });
         });
     </script>
