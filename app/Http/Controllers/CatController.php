@@ -69,6 +69,11 @@ class CatController extends Controller
         return redirect()->route('cats.index')->with('success', 'Gato actualizado con éxito.');
     }
 
+    public function about()
+    {
+        return view('about');
+    }
+
     public function edit($id)
 {
     $cat = Cat::findOrFail($id);
