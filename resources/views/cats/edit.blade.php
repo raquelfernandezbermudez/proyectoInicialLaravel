@@ -2,10 +2,10 @@
     <div class="hero min-h-full" style="background-image: url('{{ asset('images/fondo.jpg') }}');">
         <div class="bg-white p-4 rounded-xl">
             <h2 class="text-2xl font-bold mb-4">Editar Gato</h2>
-            <form method="POST" action="{{ route('cats.update', $cat->id) }}" class="space-y-4" enctype="multipart/form-data">
+            <form id="edit-cat-form" method="POST" action="{{ route('cats.update', $cat->id) }}" class="space-y-4" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                
+
                 <!-- Nombre y Edad en una fila -->
                 <div class="flex space-x-4">
                     <!-- Nombre -->
@@ -22,7 +22,7 @@
                          />
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
-                    
+
                     <!-- Edad -->
                     <div class="flex-1">
                         <x-input-label for="age" :value="__('Edad')" />
@@ -39,7 +39,7 @@
                         <x-input-error :messages="$errors->get('age')" class="mt-2" />
                     </div>
                 </div>
-                
+
                 <!-- Imagen -->
                 <div>
                     <x-input-label for="image" :value="__('Imagen')" />
@@ -63,14 +63,33 @@
                     @endif
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 </div>
-                
+
                 <!-- Botón -->
                 <div class="flex justify-end">
-                    <x-primary-button class="mt-4">
+                    <x-primary-button class="mt-4" id="update-button">
                         {{ __('Actualizar Gato') }}
                     </x-primary-button>
                 </div>
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        document.getElementById('update-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Previene el envío del formulario para mostrar la alerta primero
+
+            Swal.fire({
+                title: '¿Confirmar cambios?',
+                text: '¿Estás seguro de que deseas actualizar la información del gato?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, actualizar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('edit-cat-form').submit(); // Envía el formulario después de que el usuario confirme
+                }
+            });
+        });
+    </script>
 </x-layouts.layout>
